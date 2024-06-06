@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'cheapest.css' %}">
+    <link rel="stylesheet" href="{% static 'products.css' %}">
+    <title>Cheapest</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <a class="link" href="{% url 'index' %}"><button>Home</button></a>
+          <a class="link" href="{% url 'products' %}"><button>Products</button></a>
+          <a class="link" href="{% url 'categories' %}"><button>Categories</button></a>
+          <a class="link" href="{% url 'cheapest' %}"><button>See Cheapest Products</button></a>
+        </div>
+    </header>
+    <main>
+        <div class="container cheapest">
+            <h1>Top 3 Cheapest Products</h1>
+            <div class="products cheapest_products">
+                {% for cheapest_product in cheapest_products %}
+                    <div class="product cheapest_product">
+                        <img src="{{ cheapest_product.product.photo.url }}" alt="{{ cheapest_product.product.name }}" >
+                        <p>Name: {{ cheapest_product.product.name }}</p>
+                        <p>Price: {{ cheapest_product.product.price }}</p>
+                        <p>Category: {{ cheapest_product.product.category.name }}</p>
+                        <p>Discription : {{ cheapest_product.product.discription  }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

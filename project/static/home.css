@@ -1,0 +1,17 @@
+.home{
+    flex-direction: column;
+  
+}
+
+.home > h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+li{
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 1rem;
+    line-height: 24px;
+    list-style: circle;
+}

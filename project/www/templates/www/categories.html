@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'header.css' %}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'categories.css' %}">
+    <title>Categories</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+          <a class="link" href="{% url 'index' %}"><button>Home</button></a>
+          <a class="link" href="{% url 'products' %}"><button>Products</button></a>
+          <a class="link" href="{% url 'categories' %}"><button>Categories</button></a>
+          <a class="link" href="{% url 'cheapest' %}"><button>See Cheapest Products</button></a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="add_category">
+                <h1>Add Category</h1>
+                <form method="post" action="{% url 'categories' %}">
+                    {% csrf_token %}
+                        {{ form.name }}
+                        {{ form.discription }}
+                    <button type="submit">Add Category</button>
+                </form>
+            </div>
+            <div class="show_categories">
+                <h1>All Categories</h1>
+                <div class="categories">
+                    {% for category in categories %}
+                            <a class="category" href="{% url 'category_detail' category.id %}">
+                                <p>Name: {{ category.name }}</p>
+                                <p>Discription: {{ category.discription }}</p>
+                            </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    <main>
+</body>
+</html>

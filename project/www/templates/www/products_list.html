@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {%load static%}
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'reset.css' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
     <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'home.css' %}">
-    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'products.css' %}">
+    <title>Products List</title>
 </head>
 <body>
     <header>
@@ -20,18 +20,22 @@
         </div>
     </header>
     <main>
-        <div class="container home">
-            <h1>Simple App</h1>
-            <ul>
-                <li>First you should add categories</li>
-                <li>Next you can add products with categories and price</li>
-                <li>You can check your created categories or products in thier sites</li>
-                <li>You also can check the cheapest products in <span>"See Cheapest Products"</span></li>
-            </ul>
+        <div class="container">
+            <div class="show_products">
+                <h1>All products</h1>
+            <div class="products">  
+                {% for product in products %}
+                    <div class="product">
+                        <img src="{{ product.photo.url }}" alt="{{ product.name }}" >
+                        <p>Name: {{ product.name }}</p>
+                        <p>Price: {{ product.price}} </p>
+                        <p>Discription: {{ product.discription }}</p>
+                        <p>Category: {{ product.category.name }}</p>
+                    </div>
+                {% endfor %}
+            </div>  
+            </div>
         </div>
     </main>
-    <footer>
-        
-    </footer>
 </body>
 </html>

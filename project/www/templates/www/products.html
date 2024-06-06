@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{% static 'reset.css' %}">
     <link rel="stylesheet" href="{% static 'header.css' %}">
     <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'home.css' %}">
-    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'products.css' %}">
+    <title>Products</title>
 </head>
 <body>
     <header>
@@ -20,18 +20,23 @@
         </div>
     </header>
     <main>
-        <div class="container home">
-            <h1>Simple App</h1>
-            <ul>
-                <li>First you should add categories</li>
-                <li>Next you can add products with categories and price</li>
-                <li>You can check your created categories or products in thier sites</li>
-                <li>You also can check the cheapest products in <span>"See Cheapest Products"</span></li>
-            </ul>
+        <div class="container">
+            <div class="add_product">
+                <h1>Add Product</h1>
+                <form method="post" action="{% url 'products' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        {{ form.name }}
+                        {{ form.photo }}
+                        {{form.price}}
+                        {{ form.discription }}
+                        {{ form.category }}
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+            <div class="show_products">
+                <button><a class="link" href="{% url 'products_list' %}">See All Products</a></button>
+            </div>
         </div>
     </main>
-    <footer>
-        
-    </footer>
 </body>
 </html>

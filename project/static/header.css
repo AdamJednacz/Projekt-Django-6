@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 ;
+    
+}
+
+header > .container{
+    width: 60%;
+}
+
+.link > button{
+    margin-top: 0;
+}
