@@ -21,14 +21,14 @@
     </header>
     <main>
         <div class="container">
-            <div class="show_products">
+            <div class="show_products  products_list">
                 <h1>All products</h1>
             <div class="products">  
                 {% for product in products %}
                     <div class="product">
                         <img src="{{ product.photo.url }}" alt="{{ product.name }}" >
                         <p>Name: {{ product.name }}</p>
-                        <p>Price: {{ product.price}} </p>
+                        <p>Price: {{ product.price}} PLN</p>
                         <p>Discription: {{ product.discription }}</p>
                         <p>Category: {{ product.category.name }}</p>
                     </div>

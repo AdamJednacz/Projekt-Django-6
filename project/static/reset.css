@@ -41,8 +41,8 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
-
+/* 
+////////// ///////////////////////////// */
 .container{
     max-width: 90%;
     display: flex;
@@ -62,14 +62,11 @@ span{
  
 }
 
-a{
-    text-decoration: none;
-    color: #fff;
-}
+
 
 /* style do formularza rubryki */
 
-input[type="text"],input[type="file"] {
+input[type="text"],input[type="file"],input[type="number"] {
     background-color: #fff;
     border-radius: 12px;
     line-height: 24px;
@@ -146,3 +143,5 @@ label{
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }   
+
+

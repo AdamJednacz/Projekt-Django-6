@@ -17,7 +17,7 @@ class CategoryForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
 
     name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Name'}))
-    price = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Price'}))
+    price = forms.CharField(max_length=100, widget=forms.NumberInput(attrs={'placeholder': 'Price'}))
     discription = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Discription'}))
     photo = forms.ImageField(widget=forms.FileInput(attrs={'placeholder': 'Choose a photo'}))
     category = forms.ModelChoiceField(queryset=Category.objects.all(), widget=forms.Select(attrs={'placeholder': 'Select a Category'}))

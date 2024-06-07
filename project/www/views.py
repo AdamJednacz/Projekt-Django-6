@@ -11,21 +11,19 @@ def products(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            update_cheapest()
             return redirect('products')
     else:
         form = ProductForm()
     
-    products = Product.objects.all()
-    return render(request, 'www/products.html', {'form': form, 'products': products})
+   
+    return render(request, 'www/products.html', {'form': form})
+
+
 
 def products_list(request):
-
     products = Product.objects.all()
     return render(request, 'www/products_list.html', {'products': products})
-
-
-
-
 
 
 
@@ -48,16 +46,16 @@ def category_detail(request, category_id):
     return render(request, 'www/category_detail.html', {'category': category, 'products': products})
 
 
-
 def update_cheapest():
+   
     cheapest_products = Product.objects.order_by('price')[:3]
-    Cheapest.objects.all().delete()  # Usuń poprzednie dane z modelu Cheapest
+    Cheapest.objects.all().delete() 
     for product in cheapest_products:
         Cheapest.objects.create(product=product)
 
+
 def cheapest(request):
-    # Aktualizacja najtańszych produktów
-    update_cheapest()
-    # Pobranie aktualnych najtańszych produktów
+    
     cheapest_products = Cheapest.objects.all()
     return render(request, 'www/cheapest.html', {'cheapest_products': cheapest_products})
+
