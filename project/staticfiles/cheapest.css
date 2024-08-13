@@ -1,0 +1,13 @@
+.cheapest{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cheapest > .products {
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.cheapest_products > .product{
+    width: 33%;
+}
